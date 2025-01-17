@@ -37,7 +37,7 @@ def make_data_loader(dataset, neox_args):
     rank = mpu.get_data_parallel_rank()
     global_batch_size = neox_args.batch_size * world_size
     num_workers = neox_args.num_workers
-
+    print("world_size={world_size}, rank={rank}")
     # Use a simple sampler with distributed batch sampler.
     sampler = torch.utils.data.SequentialSampler(dataset)
     batch_sampler = DistributedBatchSampler(
